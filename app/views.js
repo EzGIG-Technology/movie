@@ -391,6 +391,11 @@ function studioView() {
       <div class="scenebar"><span class="sl">Adegan (klasifikasi)</span><span class="st">${scs.map(sc => `<span data-act="seekscene" data-s="${sc.s}" title="Adegan ${sc.i + 1} · ${sc.rating}" style="left:${(sc.s / dur * 100).toFixed(3)}%;width:${((sc.e - sc.s) / dur * 100).toFixed(3)}%;background:${RCOL[sc.rating]};opacity:${sc.rating === 'U' ? .45 : .9}"></span>`).join('')}</span></div>
       ${CATS.map(c => `<div class="lane"><span class="ln" title="${c.n}"><i style="background:${c.c}"></i>${c.n}</span><div class="tr" data-act="seekbar">${fl.filter(x => x.cat === c.k).map(x => `<button class="mk ${x.v === 'sah' ? 'rev' : ''} ${x.v === 'tolak' ? 'rej' : ''}" style="left:${(x.s / dur * 100).toFixed(3)}%;width:${Math.max(0.6, (x.e - x.s) / dur * 100).toFixed(3)}%;background:${c.c}" data-act="seekflag" data-fid="${x.id}" aria-label="${c.n}, ${tc(x.s)}"></button>`).join('')}</div></div>`).join('')}
       <div class="ticks"><span></span><div class="tt">${ticks}</div></div><div class="ph-wrap"><div class="ph" id="ph"></div></div></div></div>`;
+  const slMin = ui.slmin || SL_MIN; const slCat = ui.slcat || '';
+  const slCard = `<div class="card" id="slCard"><div class="card-h" style="flex-wrap:wrap;gap:10px"><h2>${I.layers}Senarai pendek adegan · kategori diukur & skor</h2>
+    <span class="seg lt" role="group" aria-label="Ambang skor">${SL_LEVELS.map(([v, t]) => `<button class="${slMin === v ? 'on' : ''}" data-act="slmin" data-v="${v}" aria-pressed="${slMin === v}" title="${t}">≥${v}</button>`).join('')}</span></div>
+    <div class="card-b" style="padding-top:8px"><p class="muted" style="margin:0 0 12px;font-size:12.5px">Hanya adegan yang mencetuskan sekurang-kurangnya satu daripada 8 kategori disenaraikan. Klik kategori untuk menapis; klik <b>Tonton</b> untuk melompat ke adegan.</p>
+    ${shortlistHTML(f, { seek: true, pick: true, min: slMin, cat: slCat })}</div></div>`;
   const sceneTbl = `<div class="card"><div class="card-h"><h2>${g(8)}Analisis adegan · ${scs.length} adegan × 8 kategori</h2><span style="font-size:12px;color:var(--ink3)">Skor 0–100 · klik baris untuk melompat</span></div>
     <div class="tbl-box" style="margin-top:8px;max-height:520px;overflow:auto"><table class="tbl stbl"><thead><tr><th>#</th><th>Masa</th><th>Adegan</th>${CATS.map(c => `<th class="cat" title="${c.n}"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:3px"><i style="width:8px;height:8px;border-radius:2px;background:${c.c}"></i>${CAT_SHORT[c.k]}</span></th>`).join('')}<th>Klasifikasi</th><th>Pengesanan</th></tr></thead><tbody>
     ${scs.map(sc => `<tr class="click ${sc === cur ? 'scene-on' : ''}" data-act="seekscene" data-s="${sc.s}" data-scene="${sc.i}"><td class="tnum muted">${sc.i + 1}</td><td class="mono" style="font-size:12px;white-space:nowrap">${tc(sc.s).slice(0, 5)}–${tc(sc.e).slice(0, 5)}</td><td style="white-space:nowrap">${esc(sc.name)}</td>
@@ -426,7 +431,7 @@ function studioView() {
       <p style="margin:4px 0 0;font-size:12px;color:var(--ink3)">Faktor utama: ${top.slice(0, 2).filter(t => t[1] > 15).map(t => t[0].n).join(', ') || 'tiada'}. AI hanya mencadangkan; keputusan muktamad dibuat oleh pegawai.</p>
     </div></div>`;
   const decCard = decCardHTML(f, fl);
-  return `<div class="studio">${guide}${qHTML}<div class="col">${fh}${player}<div class="card" id="sceneDetail" data-scene="${cur.i}">${sceneDetailHTML(f, cur)}</div>${sceneTbl}${flagTbl}${rubric}</div><div class="insp">${aiCard}${decCard}</div></div>`;
+  return `<div class="studio">${guide}${qHTML}<div class="col">${fh}${player}<div class="card" id="sceneDetail" data-scene="${cur.i}">${sceneDetailHTML(f, cur)}</div>${slCard}${sceneTbl}${flagTbl}${rubric}</div><div class="insp">${aiCard}${decCard}</div></div>`;
 }
 function frameInner(f, sc, act) {
   const a = act[0]; const m = media(f);

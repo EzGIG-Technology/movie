@@ -932,6 +932,83 @@ body.pubmode .toast{color:var(--ink)}
 .phero,.pdh{overflow:hidden;max-width:100vw}
 @media (max-width:700px){.pverify,.pguide{padding:20px}.pverify > div{min-width:0}.vbox small{overflow-wrap:anywhere}.pverify h2{font-size:25px}}
 
+/* ---------- semua filem (officer catalogue) ---------- */
+.fbk .kpi{text-align:left;cursor:pointer;font:inherit;color:inherit;border:1px solid var(--glassEdge);display:flex;flex-direction:column;gap:4px}
+.fbk .kpi.on{outline:2px solid var(--teal);outline-offset:-2px}
+.fgrp{display:flex;align-items:center;gap:8px;margin:18px 0 8px;font-size:13px;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
+.fgrp:first-child{margin-top:0}
+.flist{display:flex;flex-direction:column;gap:8px}
+.fcard{border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.75)}
+.fcard[open]{background:#fff;box-shadow:0 8px 24px rgba(16,56,140,.08)}
+.fcard summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:38px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:10px 12px}
+.fcard summary::-webkit-details-marker{display:none}
+.fcard[open] summary{border-bottom:1px solid var(--line)}
+.fcard[open] summary .chev{transform:rotate(180deg)}
+.fcard .chev{display:inline-flex;color:var(--ink3);transition:transform .2s}
+.fc-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fc-t > b{font-size:14.5px}.fc-t > small{color:var(--ink3);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-c{display:flex;flex-wrap:wrap;gap:5px}
+.fc-r{display:flex;align-items:center;gap:12px}
+.rej-b.sm{width:38px;height:26px;font-size:7.5px}
+.h8{display:grid;grid-template-columns:repeat(8,30px);gap:3px}
+.h8 span{display:flex;flex-direction:column;align-items:center;gap:2px}
+.h8 i{width:30px;height:22px;border-radius:6px;font-style:normal;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.h8 small{font-size:8.5px;color:var(--ink3);font-weight:600}
+.h8.nil i{border:1px dashed #D5DFEA}
+.fc-body{padding:14px;display:flex;flex-direction:column;gap:14px}
+.stg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;counter-reset:s}
+.stg li{position:relative;display:flex;flex-direction:column;gap:2px;padding:8px 10px 8px 38px;border-radius:11px;background:#F4F7FB;min-height:52px;font-size:12.5px}
+.stg li b{font-size:12.5px}.stg li small{font-size:11px;color:var(--ink3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stg .d{position:absolute;left:9px;top:10px;width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid #C9D4E0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--ink3)}
+.stg .d svg{width:13px;height:13px}
+.stg li.done{background:var(--okBg)}.stg li.done .d{background:var(--ok);border-color:var(--ok);color:#fff}
+.stg li.now{background:var(--infoBg);box-shadow:inset 0 0 0 1.5px var(--teal)}.stg li.now .d{background:var(--teal);border-color:var(--teal);color:#fff}
+.stg li.x{background:var(--badBg)}.stg li.x .d{background:var(--bad);border-color:var(--bad);color:#fff}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:8px}
+.facts span{display:flex;flex-direction:column;gap:1px;padding:8px 10px;border:1px solid var(--line2);border-radius:10px;min-width:0}
+.facts small{font-size:11px;color:var(--ink3);font-weight:600}.facts b{font-size:13px;overflow-wrap:anywhere}
+.facts-a{display:flex;flex-wrap:wrap;gap:8px}
+.fdec{display:flex;gap:14px;align-items:center}
+@media (max-width:1100px){.fcard summary{grid-template-columns:38px minmax(0,1fr) auto}.fcard .h8{grid-column:2 / -1;grid-row:2}.stg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.fcard summary{grid-template-columns:38px minmax(0,1fr);gap:10px}.fcard .h8{grid-column:1 / -1;grid-template-columns:repeat(8,minmax(0,1fr))}.h8 i{width:100%}.fc-r{grid-column:1 / -1;justify-content:flex-end}.stg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- scene shortlist ---------- */
+.seg.lt{background:#EEF3F8;border-color:var(--line)}.seg.lt button{color:var(--ink2)}.seg.lt button.on{background:var(--navy);color:#fff}
+.sl{display:flex;flex-direction:column;gap:10px}
+.slsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.slc{display:flex;flex-direction:column;gap:3px;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--c);border-radius:11px;background:#fff;text-align:left;font:inherit;color:inherit;min-width:0}
+button.slc{cursor:pointer}button.slc:hover{background:#F7FAFE}
+.slc.on{background:var(--sky);box-shadow:inset 0 0 0 1.5px var(--c)}
+.slc.nil{opacity:.6}
+.slc-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slc-h i{width:8px;height:8px;border-radius:2px;background:var(--c);flex-shrink:0}
+.slc-v{display:flex;align-items:baseline;gap:6px}.slc-v b{font-size:20px;line-height:1.1}.slc-v small{font-size:11px;color:var(--ink3)}
+.slc-m{font-size:11.5px;color:var(--ink2)}.slc-e{font-size:11px;color:var(--ink3)}
+.sl-head{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:13px}.sl-head .muted{font-size:12px}
+.sllist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.slrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;padding:12px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.slrow.on{box-shadow:inset 0 0 0 1.5px var(--teal);background:#F7FAFF}
+.sl-a{display:flex;flex-direction:column;align-items:center;gap:6px}.sl-n{font-size:12px;font-weight:800;color:var(--ink3)}
+.sl-b{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sl-t{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:13px}.sl-t .mono{font-size:12px}.sl-t .muted{font-size:12px}
+.sl-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.slcat{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 8px;align-items:center;padding:8px 10px;border-radius:10px;background:#F7F9FC;border-left:3px solid var(--c)}
+.slcat .nm{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;min-width:0}.slcat .nm i{width:8px;height:8px;border-radius:2px;background:var(--c);flex-shrink:0}
+.slcat > b{font-size:16px}.slcat .chip{font-size:10.5px;padding:1px 7px}
+.slcat .bar{grid-column:1 / -1;height:5px}
+.slcat ul{grid-column:1 / -1;margin:0;padding:0;list-style:none;font-size:12px;color:var(--ink2);display:flex;flex-direction:column;gap:2px}
+.slcat ul .mono{font-weight:700}
+.sl-why{font-size:12px;color:var(--ink3)}
+.sl-c{display:flex;align-items:flex-start}
+@media (max-width:900px){.slsum{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.slrow{grid-template-columns:auto minmax(0,1fr)}.sl-c{grid-column:1 / -1}.sl-cats{grid-template-columns:minmax(0,1fr)}}
+.fc-n{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}.fc-n b{font-size:14.5px}
+.s8{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-width:560px}
+.s8 span{display:flex;flex-direction:column;align-items:center;padding:3px 2px;border-radius:7px;background:#F4F7FB;color:var(--ink3);min-width:0}
+.s8 small{font-size:9.5px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis}.s8 b{font-size:12.5px;color:var(--ink2)}
+.s8 span.hit{background:#fff;box-shadow:inset 0 0 0 1.5px var(--c)}.s8 span.hit b{color:var(--c);font-size:13.5px}.s8 span.hit small{color:var(--ink)}
+@media (max-width:640px){.fbk{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fbk .kpi:first-child{grid-column:1 / -1}.fbk .kpi b{font-size:24px}}
+
 </style>
 <div class="waves" aria-hidden="true"></div>
 <div id="app"></div>
@@ -1630,6 +1707,11 @@ function studioView() {
       <div class="scenebar"><span class="sl">Adegan (klasifikasi)</span><span class="st">${scs.map(sc => `<span data-act="seekscene" data-s="${sc.s}" title="Adegan ${sc.i + 1} · ${sc.rating}" style="left:${(sc.s / dur * 100).toFixed(3)}%;width:${((sc.e - sc.s) / dur * 100).toFixed(3)}%;background:${RCOL[sc.rating]};opacity:${sc.rating === 'U' ? .45 : .9}"></span>`).join('')}</span></div>
       ${CATS.map(c => `<div class="lane"><span class="ln" title="${c.n}"><i style="background:${c.c}"></i>${c.n}</span><div class="tr" data-act="seekbar">${fl.filter(x => x.cat === c.k).map(x => `<button class="mk ${x.v === 'sah' ? 'rev' : ''} ${x.v === 'tolak' ? 'rej' : ''}" style="left:${(x.s / dur * 100).toFixed(3)}%;width:${Math.max(0.6, (x.e - x.s) / dur * 100).toFixed(3)}%;background:${c.c}" data-act="seekflag" data-fid="${x.id}" aria-label="${c.n}, ${tc(x.s)}"></button>`).join('')}</div></div>`).join('')}
       <div class="ticks"><span></span><div class="tt">${ticks}</div></div><div class="ph-wrap"><div class="ph" id="ph"></div></div></div></div>`;
+  const slMin = ui.slmin || SL_MIN; const slCat = ui.slcat || '';
+  const slCard = `<div class="card" id="slCard"><div class="card-h" style="flex-wrap:wrap;gap:10px"><h2>${I.layers}Senarai pendek adegan · kategori diukur & skor</h2>
+    <span class="seg lt" role="group" aria-label="Ambang skor">${SL_LEVELS.map(([v, t]) => `<button class="${slMin === v ? 'on' : ''}" data-act="slmin" data-v="${v}" aria-pressed="${slMin === v}" title="${t}">≥${v}</button>`).join('')}</span></div>
+    <div class="card-b" style="padding-top:8px"><p class="muted" style="margin:0 0 12px;font-size:12.5px">Hanya adegan yang mencetuskan sekurang-kurangnya satu daripada 8 kategori disenaraikan. Klik kategori untuk menapis; klik <b>Tonton</b> untuk melompat ke adegan.</p>
+    ${shortlistHTML(f, { seek: true, pick: true, min: slMin, cat: slCat })}</div></div>`;
   const sceneTbl = `<div class="card"><div class="card-h"><h2>${g(8)}Analisis adegan · ${scs.length} adegan × 8 kategori</h2><span style="font-size:12px;color:var(--ink3)">Skor 0–100 · klik baris untuk melompat</span></div>
     <div class="tbl-box" style="margin-top:8px;max-height:520px;overflow:auto"><table class="tbl stbl"><thead><tr><th>#</th><th>Masa</th><th>Adegan</th>${CATS.map(c => `<th class="cat" title="${c.n}"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:3px"><i style="width:8px;height:8px;border-radius:2px;background:${c.c}"></i>${CAT_SHORT[c.k]}</span></th>`).join('')}<th>Klasifikasi</th><th>Pengesanan</th></tr></thead><tbody>
     ${scs.map(sc => `<tr class="click ${sc === cur ? 'scene-on' : ''}" data-act="seekscene" data-s="${sc.s}" data-scene="${sc.i}"><td class="tnum muted">${sc.i + 1}</td><td class="mono" style="font-size:12px;white-space:nowrap">${tc(sc.s).slice(0, 5)}–${tc(sc.e).slice(0, 5)}</td><td style="white-space:nowrap">${esc(sc.name)}</td>
@@ -1665,7 +1747,7 @@ function studioView() {
       <p style="margin:4px 0 0;font-size:12px;color:var(--ink3)">Faktor utama: ${top.slice(0, 2).filter(t => t[1] > 15).map(t => t[0].n).join(', ') || 'tiada'}. AI hanya mencadangkan; keputusan muktamad dibuat oleh pegawai.</p>
     </div></div>`;
   const decCard = decCardHTML(f, fl);
-  return `<div class="studio">${guide}${qHTML}<div class="col">${fh}${player}<div class="card" id="sceneDetail" data-scene="${cur.i}">${sceneDetailHTML(f, cur)}</div>${sceneTbl}${flagTbl}${rubric}</div><div class="insp">${aiCard}${decCard}</div></div>`;
+  return `<div class="studio">${guide}${qHTML}<div class="col">${fh}${player}<div class="card" id="sceneDetail" data-scene="${cur.i}">${sceneDetailHTML(f, cur)}</div>${slCard}${sceneTbl}${flagTbl}${rubric}</div><div class="insp">${aiCard}${decCard}</div></div>`;
 }
 function frameInner(f, sc, act) {
   const a = act[0]; const m = media(f);
@@ -2172,6 +2254,7 @@ function recordModal(id) {
       ${f.request && f.status !== 'Diluluskan' ? `<div><div class="lbl" style="margin-bottom:8px">Pindaan diminta (untuk ${f.request.rating})</div>${cutsHTML(f.request.cuts)}</div>` : ''}
       ${f.ai.done ? `<div class="aisum"><div style="display:flex;gap:12px;align-items:center">${badge(f.ai.rating, 40, true)}<div><b>Cadangan AI: ${f.ai.rating}</b><div class="muted" style="font-size:12.5px">${f.ai.flags.length} penanda · keyakinan ${Math.round(f.ai.conf * 100)}%${d && d.kind !== 'tolak' ? ` · ${d.agreed ? 'selari dengan keputusan' : 'dipinda oleh pegawai'}` : ''}</div></div></div>
         <div class="mini8">${CATS.map(c => { const v = f.ai.scores[c.k] || 0; return `<span title="${c.n}: ${v}"><i style="height:${Math.max(4, v)}%;background:${c.c}"></i><small>${CAT_SHORT[c.k]}</small></span>`; }).join('')}</div></div>` : ''}
+      ${f.ai.done ? `<div><div class="lbl" style="margin-bottom:8px">Senarai pendek adegan · 8 kategori</div>${shortlistHTML(f, { limit: 8 })}</div>` : ''}
       <div><div class="lbl" style="margin-bottom:8px">Jejak kes</div>${timelineHTML(f)}</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">${f.cert && d && d.kind !== 'tolak' ? `<button class="btn btn-pri" data-act="cert" data-id="${f.id}">${I.doc}Lihat sijil</button>` : ''}${isActive(f) && role().mods.includes('pegawai') ? `<button class="btn" data-act="openfilm" data-id="${f.id}">${I.screen}Buka dalam stesen kerja</button>` : ''}</div>
     </div></div>`);
@@ -2189,14 +2272,15 @@ const OFILT = [
   ['pindaan', 'Pindaan diminta', f => f.status === 'Pindaan Diminta'],
   ['rayuan', 'Rayuan', f => f.status === 'Rayuan'],
 ];
-const OTABS = [['tugasan', 'Papan kerja'], ['gilir', 'Baris gilir'], ['semak', 'Semakan filem'], ['arkib', 'Arkib keputusan']];
+const OTABS = [['tugasan', 'Papan kerja'], ['filem', 'Semua filem'], ['gilir', 'Baris gilir'], ['semak', 'Semakan filem'], ['arkib', 'Arkib keputusan']];
 function otabsHTML() {
-  const n = { tugasan: myTasks().length, gilir: S.films.filter(isActive).length, arkib: S.films.filter(f => DONE_ST.includes(f.status)).length };
+  const n = { tugasan: myTasks().length, filem: S.films.filter(f => f.status !== 'Draf').length, gilir: S.films.filter(isActive).length, arkib: S.films.filter(f => DONE_ST.includes(f.status)).length };
   return `<div class="seg-l" role="tablist">${OTABS.map(([k, t]) => `<button role="tab" class="${ui.otab === k ? 'on' : ''}" data-act="otab" data-v="${k}">${t}${n[k] ? `<span class="tc">${n[k]}</span>` : ''}</button>`).join('')}</div>`;
 }
 function viewPegawai() {
   if (ui.otab === 'semak') return studioView();
   if (ui.otab === 'gilir') return oQueue();
+  if (ui.otab === 'filem') return oFilms();
   if (ui.otab === 'arkib') return oArchive();
   return oBoard();
 }
@@ -2268,6 +2352,7 @@ function oArchive() {
 // decision panel for the studio
 const DKINDS = [['lulus', 'Lulus'], ['potong', 'Lulus dengan potongan'], ['tolak', 'Tidak lulus'], ['panel', 'Rujuk panel']];
 function decCardHTML(f, fl) {
+  if (DONE_ST.includes(f.status) && f.decision) return decDoneCard(f);
   const d = ui.dec[f.id]; const highPend = fl.filter(x => x.sev === 'Tinggi' && !x.v).length;
   const who = f.status === 'Rujuk Panel' ? 'Keputusan panel' : f.status === 'Rayuan' ? 'Keputusan Jawatankuasa Rayuan' : 'Keputusan pegawai';
   if (f.status === 'Pindaan Diminta') return `<div class="card"><div class="card-h"><h2>${who}</h2><span class="chip st-Pindaan">Pindaan diminta</span></div><div class="card-b" style="display:flex;flex-direction:column;gap:12px">
@@ -2302,6 +2387,163 @@ function studioBar(f) {
   const mine = myTasks().filter(x => x.id !== (f && f.id)).slice(0, 5);
   return `<div class="card full sbar"><button class="btn btn-sm" data-act="otab" data-v="gilir">${I.prev}Baris gilir</button><span class="muted" style="font-size:12.5px;font-weight:600">Tugasan saya seterusnya:</span>
     ${mine.map(x => `<button class="sbt" data-act="openfilm" data-id="${x.id}">${stillThumb(x)}<span><b>${esc(x.title)}</b>${slaChip(x)}</span></button>`).join('') || '<span class="muted">Tiada</span>'}</div>`;
+}
+
+// ---------- scene shortlist (scenes × 8 categories that were measured) ----------
+const SL_MIN = 18; // lowest score that moves a scene above U
+const SL_LEVELS = [[18, '≥18 · melebihi U'], [34, '≥34 · 13 ke atas'], [52, '≥52 · 16 ke atas'], [76, '≥76 · 18']];
+function sceneCats(sc, min = SL_MIN) {
+  return CATS.map(c => ({ c, v: sc.scores[c.k], fl: sc.flags.filter(x => x.cat === c.k) }))
+    .filter(x => x.v >= min || (x.fl.length && min <= SL_MIN)).sort((a, b) => b.v - a.v);
+}
+function shortlistOf(f, min = SL_MIN, cat = '') {
+  if (!f.ai || !f.ai.done) return [];
+  return scenesOf(f).map(sc => ({ sc, cats: sceneCats(sc, min) })).filter(x => x.cats.length && (!cat || x.cats.some(y => y.c.k === cat)));
+}
+function catSummary(f) {
+  const scs = scenesOf(f);
+  return CATS.map(c => {
+    const hits = scs.filter(sc => sc.scores[c.k] >= SL_MIN || sc.flags.some(x => x.cat === c.k));
+    const peak = scs.reduce((a, s) => s.scores[c.k] > a.scores[c.k] ? s : a, scs[0]);
+    return { c, n: hits.length, max: peak.scores[c.k], peak, film: f.ai.scores[c.k] || 0, flags: f.ai.flags.filter(x => x.cat === c.k).length, secs: hits.reduce((t, s) => t + s.e - s.s, 0) };
+  });
+}
+const CAT_EFFECT = { agama: 'Rujuk panel jika ≥40', sensitif: 'Rujuk panel jika ≥40' };
+function catSummaryHTML(f, opts = {}) {
+  const rows = catSummary(f); const on = opts.cat || '';
+  return `<div class="slsum">${rows.map(r => `<${opts.pick ? `button data-act="slcat" data-v="${on === r.c.k ? '' : r.c.k}"` : 'div'} class="slc ${on === r.c.k ? 'on' : ''} ${r.n ? '' : 'nil'}" style="--c:${r.c.c}" title="${r.c.n}">
+    <span class="slc-h"><i></i>${r.c.n}</span>
+    <span class="slc-v"><b class="tnum">${r.film}</b><small>skor filem</small></span>
+    <span class="slc-m tnum">${r.n ? `${r.n} adegan · puncak ${r.max} (#${r.peak.i + 1})` : 'Tiada adegan melebihi ambang'}</span>
+    <span class="bar"><i style="width:${r.film}%;background:${r.c.c}"></i></span>
+    <small class="slc-e">${CAT_EFFECT[r.c.k] || (r.n ? `${r.flags} penanda · ${Math.round(r.secs / 60)} min` : `${r.flags} penanda`)}</small></${opts.pick ? 'button' : 'div'}>`).join('')}</div>`;
+}
+function shortlistHTML(f, opts = {}) {
+  const min = opts.min || SL_MIN; const cat = opts.cat || ''; const all = scenesOf(f);
+  const list = shortlistOf(f, min, cat);
+  const shown = opts.limit ? list.slice(0, opts.limit) : list;
+  const below = all.length - shortlistOf(f, min).length;
+  const cur = opts.seek && ui.sel === f.id ? sceneAt(f, ui.time) : null;
+  const row = ({ sc, cats }) => `<li class="slrow ${cur === sc ? 'on' : ''}">
+    <div class="sl-a"><span class="sl-n tnum">#${sc.i + 1}</span>${badge(sc.rating, 34, true)}</div>
+    <div class="sl-b"><div class="sl-t"><b>${esc(sc.name)}</b><span class="mono tnum">${tc(sc.s)} – ${tc(sc.e)}</span><span class="muted">${Math.round((sc.e - sc.s) / 60 * 10) / 10} min</span>${sc.panel ? '<span class="chip st-Rujuk">Rujuk panel</span>' : ''}</div>
+      <div class="s8" aria-label="Skor 8 kategori adegan">${CATS.map(c => { const v = sc.scores[c.k]; const hit = cats.some(y => y.c.k === c.k); return `<span class="${hit ? 'hit' : ''}" style="--c:${c.c}" title="${c.n}: ${v}${hit ? ' · diukur' : ' · skor latar'}"><small>${CAT_SHORT[c.k]}</small><b class="tnum">${v}</b></span>`; }).join('')}</div>
+      <div class="sl-cats">${cats.map(({ c, v, fl }) => `<div class="slcat" style="--c:${c.c}"><span class="nm"><i></i>${c.n}</span><b class="tnum">${v}</b>${sevChip(sevOf(v))}<span class="bar"><i style="width:${v}%;background:${c.c}"></i></span>
+        ${fl.length ? `<ul>${fl.map(x => `<li><span class="mono">${tc(x.s)}</span> ${esc(x.d)} <span class="muted">· AI ${Math.round(x.conf * 100)}%${x.v === 'sah' ? ' · disahkan' : x.v === 'tolak' ? ' · bukan isu' : ''}</span></li>`).join('')}</ul>` : '<ul><li class="muted">Skor model tanpa penanda khusus</li></ul>'}</div>`).join('')}</div>
+      <div class="sl-why">Dinilai <b>${sc.rating}</b> kerana ${sc.scores[sc.top] >= SL_MIN ? `${CAT[sc.top].n} ${sc.scores[sc.top]} (julat ${RANGE[sc.rating]})` : 'tiada kategori klasifikasi melebihi 17'}${cats.length > 1 ? ` · ${cats.length} kategori diukur` : ''}</div></div>
+    ${opts.seek ? `<div class="sl-c"><button class="btn btn-sm" data-act="${ui.sel === f.id && ui.otab === 'semak' ? 'slseek' : 'slopen'}" data-id="${f.id}" data-s="${sc.s}">${I.play}Tonton</button></div>` : ''}</li>`;
+  return `<div class="sl">
+    ${opts.noSummary ? '' : catSummaryHTML(f, { pick: opts.pick, cat })}
+    <div class="sl-head"><b>Senarai pendek: ${list.length} daripada ${all.length} adegan</b><span class="muted">${cat ? `kategori ${CAT[cat].n} · ` : ''}ambang skor ${min}${below ? ` · ${below} adegan lain di bawah ambang` : ''}</span></div>
+    ${shown.length ? `<ol class="sllist">${shown.map(row).join('')}</ol>` : `<div class="empty" style="padding:18px">Tiada adegan melebihi ambang ${min}${cat ? ` bagi ${CAT[cat].n}` : ''}. Semua adegan dinilai U bagi kriteria ini.</div>`}
+    ${opts.limit && list.length > opts.limit ? `<div class="muted" style="font-size:12.5px;padding:8px 2px 0">+ ${list.length - opts.limit} adegan lagi · buka dalam stesen kerja untuk senarai penuh</div>` : ''}
+  </div>`;
+}
+
+// ---------- all films catalogue (officer) ----------
+const PROC_ST = ['Menunggu Bayaran', 'Diserahkan', 'Pra-saringan AI'];
+const REV_ST = ['Menunggu Semakan', 'Rujuk Panel', 'Pindaan Diminta', 'Rayuan'];
+const FBUCKETS = [
+  ['semua', 'Semua filem', f => f.status !== 'Draf', ''],
+  ['proses', 'Dalam pemprosesan', f => PROC_ST.includes(f.status), 'st-Pra-saringan'],
+  ['semakan', 'Dalam semakan', f => REV_ST.includes(f.status), 'st-Menunggu'],
+  ['lulus', 'Diluluskan', f => f.status === 'Diluluskan', 'st-Diluluskan'],
+  ['tolak', 'Ditolak', f => f.status === 'Ditolak', 'st-Ditolak'],
+];
+function bucketOf(f) { return PROC_ST.includes(f.status) ? 'proses' : REV_ST.includes(f.status) ? 'semakan' : f.status === 'Diluluskan' ? 'lulus' : f.status === 'Ditolak' ? 'tolak' : ''; }
+const STAGES = ['Serahan', 'Bayaran', 'Pra-saringan AI', 'Semakan pegawai', 'Keputusan', 'Sijil'];
+function stageIdx(f) { return { 'Draf': 0, 'Menunggu Bayaran': 1, 'Diserahkan': 2, 'Pra-saringan AI': 2, 'Menunggu Semakan': 3, 'Rujuk Panel': 3, 'Pindaan Diminta': 3, 'Rayuan': 4, 'Diluluskan': 6, 'Ditolak': 5 }[f.status] ?? 0; }
+function stageNote(f, i) {
+  const idx = stageIdx(f);
+  if (i === 1 && idx > 1) return rm(fee(f));
+  if (i === 1 && idx === 1) return 'Invois belum dibayar';
+  if (i === 2 && f.status === 'Pra-saringan AI') return f.ai.running ? `${Math.round(f.ai.progress)}% dianalisis` : f.ai.queued ? `Giliran GPU #${f.ai.queued}` : 'Sedia dijalankan';
+  if (i === 2 && f.status === 'Diserahkan') return 'Menunggu pengesahan fail';
+  if (i === 2 && f.ai.done) return `Cadangan ${f.ai.rating} · ${Math.round(f.ai.conf * 100)}%`;
+  if (i === 3 && idx === 3) return f.status === 'Menunggu Semakan' ? (f.assignee ? esc(f.assignee) : 'Belum ditugaskan') : f.status;
+  if (i === 3 && idx > 3) return esc((f.decision && f.decision.by) || f.assignee || '');
+  if (i === 4 && f.status === 'Rayuan') return 'Rayuan sedang didengar';
+  if (i === 4 && f.decision) return f.decision.kind === 'tolak' ? `Tidak lulus · Kod ${f.decision.code}` : `Lulus ${f.decision.rating}${f.decision.kind === 'potong' ? ' · potongan' : ''}`;
+  if (i === 5 && f.status === 'Ditolak') return 'Tidak dikeluarkan';
+  if (i === 5 && f.cert) return f.cert;
+  return '';
+}
+function stagesHTML(f) {
+  const idx = stageIdx(f); const rej = f.status === 'Ditolak';
+  return `<ol class="stg">${STAGES.map((s, i) => { const cls = rej && i === 5 ? 'x' : i < idx ? 'done' : i === idx ? 'now' : ''; const n = stageNote(f, i);
+    return `<li class="${cls}"><span class="d">${cls === 'done' ? I.check : cls === 'x' ? I.x : i + 1}</span><b>${s}</b>${n ? `<small>${n}</small>` : ''}</li>`; }).join('')}</ol>`;
+}
+function heat8(f) {
+  if (!f.ai || !f.ai.done) return `<div class="h8 nil">${CATS.map(c => `<span title="${c.n}: belum dianalisis"><i style="background:${hexA(c.c, .12)}"></i><small>${CAT_SHORT[c.k]}</small></span>`).join('')}</div>`;
+  return `<div class="h8">${CATS.map(c => { const v = f.ai.scores[c.k] || 0; return `<span title="${c.n}: ${v}"><i style="background:${hexA(c.c, .08 + v / 100 * .85)};color:${v > 50 ? '#fff' : 'var(--ink)'}">${v}</i><small>${CAT_SHORT[c.k]}</small></span>`; }).join('')}</div>`;
+}
+function decisionBlock(f) {
+  const d = f.decision; if (!d) return '';
+  if (d.kind === 'tolak') return `<div class="banner bad">${I.x}<span><b>Tidak diluluskan</b> oleh ${esc(d.by)} pada ${fmtDate(d.at)} · Kod ${d.code}: ${esc((REJECT.find(r => r[0] === d.code) || ['', ''])[1])}${d.reason ? `<br>${esc(d.reason)}` : ''}${f.appeal ? `<br><b>Rayuan:</b> ${esc(f.appeal.status)} · pendengaran ${fmtDate(f.appeal.hearing)}` : ''}</span></div>`;
+  return `<div class="fdec">${badge(d.rating, 48)}<div><b>Diluluskan sebagai ${d.rating}</b>${d.kind === 'potong' ? ` <span class="chip st-Pindaan">${d.cuts.length} potongan</span>` : ''}<div class="muted" style="font-size:12.5px">${esc(d.by)} · ${fmtDate(d.at)} · ${d.agreed ? 'selari dengan AI' : `dipinda daripada AI ${f.ai.rating}`}${f.cert ? ` · sijil <span class="mono">${f.cert}</span>` : ''}</div>
+    <div style="font-size:12.5px;margin-top:3px">Nasihat pengguna: <b>${d.advice && d.advice.length ? d.advice.join(', ') : 'Tiada'}</b></div></div></div>
+    ${d.cuts && d.cuts.length ? `<div><div class="lbl" style="margin-bottom:6px">Potongan diwajibkan</div>${cutsHTML(d.cuts)}</div>` : ''}`;
+}
+function factsHTML(f) {
+  const scs = f.ai.done ? scenesOf(f) : []; const sl = f.ai.done ? shortlistOf(f) : [];
+  const rev = f.ai.done ? f.ai.flags.filter(x => x.v).length : 0;
+  const items = [['Pemohon', esc(f.dist)], ['Jenis', `${f.type} · ${f.genre}`], ['Bahasa', f.lang], ['Durasi', `${f.min} minit`], ['Platform', `${f.platform}${f.selfRating ? ` · kendiri ${f.selfRating}` : ''}`], ['Laluan', f.express ? 'Ekspres (48 jam)' : 'Biasa (7 hari)'], ['Diterima', fmtDate(f.submitted)], ['Pegawai', esc(f.assignee || (f.decision && f.decision.by) || '—')]];
+  if (f.ai.done) items.push(['Adegan dianalisis', `${scs.length}`], ['Senarai pendek', `${sl.length} adegan · ${Math.round(sl.reduce((t, x) => t + x.sc.e - x.sc.s, 0) / 60)} min`], ['Penanda AI', `${f.ai.flags.length} · ${rev} disemak`], ['Keyakinan AI', `${Math.round(f.ai.conf * 100)}%`]);
+  if (isActive(f) && !['Pindaan Diminta', 'Rayuan', 'Rujuk Panel'].includes(f.status) && f.status !== 'Menunggu Bayaran') items.push(['Tarikh akhir SLA', fmtDate(dueOf(f))]);
+  return `<div class="facts">${items.map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>`;
+}
+function filmActs(f) {
+  const b = [];
+  if (f.ai.done || ['Diserahkan', 'Pra-saringan AI'].includes(f.status)) b.push(`<button class="btn btn-sm ${REV_ST.includes(f.status) ? 'btn-pri' : ''}" data-act="openfilm" data-id="${f.id}">${I.screen}${f.ai.done ? 'Buka dalam stesen kerja' : 'Buka pra-saringan'}</button>`);
+  if (f.status === 'Menunggu Semakan' && !f.assignee) b.push(`<button class="btn btn-sm" data-act="take" data-id="${f.id}">Ambil tugasan</button>`);
+  b.push(`<button class="btn btn-sm btn-ghost" data-act="rec" data-id="${f.id}">${I.doc}Jejak kes</button>`);
+  if (f.cert && f.decision && f.decision.kind !== 'tolak') b.push(`<button class="btn btn-sm btn-ghost" data-act="cert" data-id="${f.id}">${I.cert}Sijil</button>`);
+  return `<div class="facts-a">${b.join('')}</div>`;
+}
+function filmCard(f, open) {
+  const bk = bucketOf(f); const sl = f.ai.done ? shortlistOf(f) : [];
+  const body = `<div class="fc-body">${stagesHTML(f)}
+    ${bk === 'proses' ? `<div class="banner i">${I.clock}<span>${f.status === 'Menunggu Bayaran' ? `Serahan diterima tetapi invois <b>${rm(fee(f))}</b> belum dibayar. Pra-saringan AI bermula selepas bayaran disahkan.` : f.status === 'Diserahkan' ? 'Fail sedang disahkan (checksum, penyulitan, tera air). Pra-saringan AI 8 kategori akan dijalankan seterusnya.' : `Otak AI KDN sedang memecah filem kepada adegan dan memberi skor 8 kategori${f.ai.running ? ` — <b>${Math.round(f.ai.progress)}%</b> selesai` : f.ai.queued ? ` — giliran GPU <b>#${f.ai.queued}</b>` : ''}. Senarai pendek adegan tersedia selepas analisis selesai.`}</span></div>` : ''}
+    ${f.status === 'Rujuk Panel' && f.panel ? `<div class="banner v">${I.shield}<span><b>${f.panel.name}</b> · sesi ${fmtDate(f.panel.at)} · ${esc(f.panel.reason)}</span></div>` : ''}
+    ${f.status === 'Pindaan Diminta' && f.request ? `<div class="banner w">${I.clock}<span><b>Pindaan diminta</b> untuk kelulusan ${f.request.rating} · versi disunting perlu sebelum ${fmtDate(f.request.due)}</span></div>${cutsHTML(f.request.cuts)}` : ''}
+    ${f.status === 'Rayuan' && f.appeal ? `<div class="banner v">${I.shield}<span><b>Rayuan</b> difailkan ${fmtDate(f.appeal.at)} · pendengaran ${fmtDate(f.appeal.hearing)} · «${esc(f.appeal.grounds)}»</span></div>` : ''}
+    ${decisionBlock(f)}
+    ${factsHTML(f)}
+    ${f.ai.done ? `<div><div class="lbl" style="margin-bottom:8px">${I.layers}Adegan yang diukur mengikut 8 kategori</div>${shortlistHTML(f, { seek: true, limit: bk === 'semakan' ? 0 : 6 })}</div>` : ''}
+    ${filmActs(f)}</div>`;
+  return `<details class="fcard" data-fid="${f.id}"${open ? ' open' : ''}><summary>
+    ${poster(f, 'pthumb')}
+    <span class="fc-t"><span class="fc-n"><b>${esc(f.title)}</b>${f.express ? `<span class="chip tag-x">${I.bolt}Ekspres</span>` : ''}${f.selfRating ? '<span class="chip st-Rujuk">Audit OTT</span>' : ''}</span><small>${f.id} · ${esc(f.dist)} · ${f.min} min · ${f.platform}</small>
+      <span class="fc-c">${stChipX(f)}${slaChip(f)}${f.ai.done ? `<span class="chip">${sl.length}/${scenesOf(f).length} adegan disenarai pendek</span>` : ''}</span></span>
+    ${heat8(f)}
+    <span class="fc-r"><span class="aib">${f.ai.done ? badge(f.ai.rating, 30, true) : '<span class="muted">—</span>'}<small>AI</small></span><span class="aib">${resultCell(f).replace('rej-b', 'rej-b sm')}<small>Akhir</small></span><span class="chev">${I.down}</span></span>
+  </summary>${body}</details>`;
+}
+function oFilms() {
+  const fk = ui.fb || 'semua'; const fn = FBUCKETS.find(x => x[0] === fk)[2]; const q = (ui.oq || '').toLowerCase();
+  const pool = S.films.filter(f => f.status !== 'Draf');
+  const order = { semakan: 0, proses: 1, lulus: 2, tolak: 3 };
+  const list = pool.filter(fn).filter(f => !q || (f.title + f.id + f.dist + f.genre + (f.cert || '')).toLowerCase().includes(q))
+    .sort((a, b) => (order[bucketOf(a)] - order[bucketOf(b)]) || (b.express - a.express) || (new Date(b.decision ? b.decision.at : b.submitted) - new Date(a.decision ? a.decision.at : a.submitted)));
+  const rev = pool.filter(f => REV_ST.includes(f.status));
+  const slN = rev.reduce((t, f) => t + shortlistOf(f).length, 0);
+  const groups = fk === 'semua' ? FBUCKETS.slice(1).map(([k, t]) => [k, t, list.filter(f => bucketOf(f) === k)]).filter(g => g[2].length) : [[fk, '', list]];
+  const isOpen = f => ui.fopen[f.id] ?? (fk === 'semakan' && f === list[0]);
+  return `<div class="kpis fbk">${FBUCKETS.map(([k, t, ff, c]) => { const n = pool.filter(ff).length;
+    const sub = { semua: `${pool.filter(f => f.ai.done).length} telah dianalisis AI`, proses: `${pool.filter(f => f.status === 'Pra-saringan AI').length} dalam pra-saringan AI`, semakan: `${slN} adegan disenarai pendek`, lulus: `${pool.filter(f => f.decision && f.decision.kind === 'potong' && f.status === 'Diluluskan').length} dengan potongan`, tolak: `${pool.filter(f => f.appeal).length} rayuan difailkan` }[k];
+    return `<button class="card kpi ${fk === k ? 'on' : ''}" data-act="fb" data-v="${k}"><div class="top"><small>${t}</small>${c ? `<span class="chip ${c}" style="padding:0 8px"><span class="dot"></span></span>` : `<span class="ki">${I.layers}</span>`}</div><b class="tnum">${n}</b><span class="dl">${sub}</span></button>`; }).join('')}</div>
+  <div class="card" style="margin-top:16px"><div class="card-h" style="padding-bottom:4px;flex-wrap:wrap;gap:10px"><h2>${I.layers}${FBUCKETS.find(x => x[0] === fk)[1]} <span class="muted" style="font-weight:500;font-size:13px">· ${list.length} filem</span></h2>
+    <label class="tsearch">${I.search}<input id="oq" data-oq="1" placeholder="Cari tajuk, rujukan, pemohon, genre…" value="${esc(ui.oq || '')}"></label></div>
+    <div class="card-b" style="padding-top:6px"><p class="muted" style="margin:0 0 12px;font-size:12.5px">Klik filem untuk melihat peringkat proses, keputusan dan senarai pendek adegan. Setiap adegan disenaraikan dengan kategori yang diukur (skor ≥${SL_MIN} atau ada penanda AI) beserta skor 0–100.</p>
+    ${groups.map(([k, t, fs]) => `${t ? `<div class="fgrp"><b>${t}</b><span class="chip">${fs.length}</span></div>` : ''}<div class="flist">${fs.map(f => filmCard(f, isOpen(f))).join('')}</div>`).join('') || '<div class="empty">Tiada filem sepadan.</div>'}
+  </div></div>`;
+}
+
+// read-only decision summary in the studio for decided films
+function decDoneCard(f) {
+  return `<div class="card"><div class="card-h"><h2>Keputusan muktamad</h2>${stChip(f.status)}</div><div class="card-b" style="display:flex;flex-direction:column;gap:12px">${decisionBlock(f)}
+    <p class="muted" style="margin:0;font-size:12.5px">Kes ini telah diputuskan. Stesen kerja dibuka dalam mod baca sahaja untuk rujukan dan audit.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${f.cert && f.decision.kind !== 'tolak' ? `<button class="btn btn-sm btn-pri" data-act="cert" data-id="${f.id}">${I.cert}Lihat sijil</button>` : ''}<button class="btn btn-sm" data-act="rec" data-id="${f.id}">${I.doc}Jejak kes</button></div></div></div>`;
 }
 
 // ---------- distributor portal ----------
@@ -2562,7 +2804,7 @@ let S;
 const ui = {
   route: 'utama', sel: null, time: 0, playing: false, speed: 1, timer: null, dec: {},
   ptab: 'list', wizStep: 1, wiz: null, wizErr: '', wizDone: null, upTimer: null,
-  pub: { q: '', r: '', p: '' }, decErr: '', guide: false, otab: 'tugasan', ofilt: 'aktif', afilt: 'semua', oq: '', dtab: 'ringkasan', dfilt: 'semua', pubFilm: null, hero: 0, verify: null, resub: null, paying: false, loginStep: 1, loginRole: 'pegawai', archSel: null, archFlow: null, archStep: 0, archPlaying: false, archTimer: null,
+  pub: { q: '', r: '', p: '' }, decErr: '', guide: false, otab: 'tugasan', fb: 'semua', fopen: {}, slmin: 18, slcat: '', ofilt: 'aktif', afilt: 'semua', oq: '', dtab: 'ringkasan', dfilt: 'semua', pubFilm: null, hero: 0, verify: null, resub: null, paying: false, loginStep: 1, loginRole: 'pegawai', archSel: null, archFlow: null, archStep: 0, archPlaying: false, archTimer: null,
 };
 const jobs = {};
 function load() {
@@ -2585,7 +2827,7 @@ function newDec(f) { const rs = !!f.resubmitted; return { kind: rs ? 'potong' : 
 
 
 function selectFilm(id, doRender = true) {
-  stopPlay(); ui.sel = id; ui.time = 0; ui.decErr = '';
+  stopPlay(); if (ui.sel !== id) ui.slcat = ''; ui.sel = id; ui.time = 0; ui.decErr = '';
   const f = film(id);
   if (f && f.ai.done && !ui.dec[id]) ui.dec[id] = newDec(f);
   if (doRender) render();
@@ -2731,6 +2973,11 @@ const A = {
   pubapi: () => { const ex = pubFilms()[0]; openModal('API klasifikasi terbuka', `<p class="muted" style="margin:0 0 12px">Pawagam, platform penstriman dan aplikasi kawalan ibu bapa boleh memaparkan klasifikasi rasmi secara automatik.</p><pre class="code">GET /api/v1/klasifikasi?sijil=${esc(ex.cert)}\n\n${esc(JSON.stringify({ tajuk: ex.title, klasifikasi: ex.decision.rating, nasihat: ex.decision.advice, no_sijil: ex.cert, tarikh_keputusan: ex.decision.at.slice(0, 10), status: 'SAH' }, null, 2))}</pre>`); },
   otab: t => { ui.otab = t.dataset.v; ui.oq = ''; closeModal(); if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); window.scrollTo(0, 0); },
   ofilt: t => { ui.ofilt = t.dataset.v; render(); },
+  fb: t => { ui.fb = t.dataset.v; render(); },
+  slmin: t => { ui.slmin = +t.dataset.v; render(); },
+  slcat: t => { ui.slcat = t.dataset.v; render(); },
+  slseek: t => { seek(+t.dataset.s + 1); const e = document.getElementById('frame'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  slopen: t => { closeModal(); ui.otab = 'semak'; selectFilm(t.dataset.id, false); ui.time = +t.dataset.s + 1; if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); setTimeout(() => { const e = document.getElementById('frame'); if (e) e.scrollIntoView({ block: 'center' }); }, 60); },
   afilt: t => { ui.afilt = t.dataset.v; render(); },
   openfilm: t => { closeModal(); ui.otab = 'semak'; selectFilm(t.dataset.id, false); if (!role().mods.includes('pegawai')) { switchRole('pegawai', 'pegawai'); return; } if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); window.scrollTo(0, 0); },
   take: t => { const f = film(t.dataset.id); f.assignee = OFFICER; addLog(OFFICER, `Mengambil tugasan «${f.title}»`); save(); render(); toast(`«${esc(f.title)}» ditambah kepada tugasan anda.`, 'Semak', () => A.openfilm({ dataset: { id: f.id } })); },
@@ -2792,6 +3039,7 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t) return;
   const fn = A[t.dataset.act]; if (fn) fn(t, e);
 });
+document.addEventListener('toggle', e => { const t = e.target; if (t && t.dataset && t.dataset.fid) ui.fopen[t.dataset.fid] = t.open; }, true);
 document.addEventListener('input', e => {
   const t = e.target;
   if (t.dataset.w && t.type !== 'radio' && t.type !== 'checkbox' && t.tagName !== 'SELECT') ui.wiz[t.dataset.w] = t.value;

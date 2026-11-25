@@ -3,7 +3,7 @@ let S;
 const ui = {
   route: 'utama', sel: null, time: 0, playing: false, speed: 1, timer: null, dec: {},
   ptab: 'list', wizStep: 1, wiz: null, wizErr: '', wizDone: null, upTimer: null,
-  pub: { q: '', r: '', p: '' }, decErr: '', guide: false, otab: 'tugasan', ofilt: 'aktif', afilt: 'semua', oq: '', dtab: 'ringkasan', dfilt: 'semua', pubFilm: null, hero: 0, verify: null, resub: null, paying: false, loginStep: 1, loginRole: 'pegawai', archSel: null, archFlow: null, archStep: 0, archPlaying: false, archTimer: null,
+  pub: { q: '', r: '', p: '' }, decErr: '', guide: false, otab: 'tugasan', fb: 'semua', fopen: {}, slmin: 18, slcat: '', ofilt: 'aktif', afilt: 'semua', oq: '', dtab: 'ringkasan', dfilt: 'semua', pubFilm: null, hero: 0, verify: null, resub: null, paying: false, loginStep: 1, loginRole: 'pegawai', archSel: null, archFlow: null, archStep: 0, archPlaying: false, archTimer: null,
 };
 const jobs = {};
 function load() {
@@ -26,7 +26,7 @@ function newDec(f) { const rs = !!f.resubmitted; return { kind: rs ? 'potong' : 
 
 
 function selectFilm(id, doRender = true) {
-  stopPlay(); ui.sel = id; ui.time = 0; ui.decErr = '';
+  stopPlay(); if (ui.sel !== id) ui.slcat = ''; ui.sel = id; ui.time = 0; ui.decErr = '';
   const f = film(id);
   if (f && f.ai.done && !ui.dec[id]) ui.dec[id] = newDec(f);
   if (doRender) render();
@@ -172,6 +172,11 @@ const A = {
   pubapi: () => { const ex = pubFilms()[0]; openModal('API klasifikasi terbuka', `<p class="muted" style="margin:0 0 12px">Pawagam, platform penstriman dan aplikasi kawalan ibu bapa boleh memaparkan klasifikasi rasmi secara automatik.</p><pre class="code">GET /api/v1/klasifikasi?sijil=${esc(ex.cert)}\n\n${esc(JSON.stringify({ tajuk: ex.title, klasifikasi: ex.decision.rating, nasihat: ex.decision.advice, no_sijil: ex.cert, tarikh_keputusan: ex.decision.at.slice(0, 10), status: 'SAH' }, null, 2))}</pre>`); },
   otab: t => { ui.otab = t.dataset.v; ui.oq = ''; closeModal(); if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); window.scrollTo(0, 0); },
   ofilt: t => { ui.ofilt = t.dataset.v; render(); },
+  fb: t => { ui.fb = t.dataset.v; render(); },
+  slmin: t => { ui.slmin = +t.dataset.v; render(); },
+  slcat: t => { ui.slcat = t.dataset.v; render(); },
+  slseek: t => { seek(+t.dataset.s + 1); const e = document.getElementById('frame'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  slopen: t => { closeModal(); ui.otab = 'semak'; selectFilm(t.dataset.id, false); ui.time = +t.dataset.s + 1; if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); setTimeout(() => { const e = document.getElementById('frame'); if (e) e.scrollIntoView({ block: 'center' }); }, 60); },
   afilt: t => { ui.afilt = t.dataset.v; render(); },
   openfilm: t => { closeModal(); ui.otab = 'semak'; selectFilm(t.dataset.id, false); if (!role().mods.includes('pegawai')) { switchRole('pegawai', 'pegawai'); return; } if (ui.route !== 'pegawai') location.hash = 'pegawai'; else render(); window.scrollTo(0, 0); },
   take: t => { const f = film(t.dataset.id); f.assignee = OFFICER; addLog(OFFICER, `Mengambil tugasan «${f.title}»`); save(); render(); toast(`«${esc(f.title)}» ditambah kepada tugasan anda.`, 'Semak', () => A.openfilm({ dataset: { id: f.id } })); },
@@ -233,6 +238,7 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t) return;
   const fn = A[t.dataset.act]; if (fn) fn(t, e);
 });
+document.addEventListener('toggle', e => { const t = e.target; if (t && t.dataset && t.dataset.fid) ui.fopen[t.dataset.fid] = t.open; }, true);
 document.addEventListener('input', e => {
   const t = e.target;
   if (t.dataset.w && t.type !== 'radio' && t.type !== 'checkbox' && t.tagName !== 'SELECT') ui.wiz[t.dataset.w] = t.value;
