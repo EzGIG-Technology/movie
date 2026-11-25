@@ -1008,6 +1008,14 @@ button.slc{cursor:pointer}button.slc:hover{background:#F7FAFE}
 .s8 small{font-size:9.5px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis}.s8 b{font-size:12.5px;color:var(--ink2)}
 .s8 span.hit{background:#fff;box-shadow:inset 0 0 0 1.5px var(--c)}.s8 span.hit b{color:var(--c);font-size:13.5px}.s8 span.hit small{color:var(--ink)}
 @media (max-width:640px){.fbk{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fbk .kpi:first-child{grid-column:1 / -1}.fbk .kpi b{font-size:24px}}
+/* brain: coloured lobes, firing neurons, travelling impulses */
+.lobe{animation:lobe 5s ease-in-out infinite;opacity:.93}
+@keyframes lobe{0%,100%{opacity:.86}50%{opacity:1}}
+.spark{stroke-dasharray:10 100;stroke-dashoffset:110;animation:spark 2.4s linear infinite}
+@keyframes spark{0%{stroke-dashoffset:110;opacity:0}8%{opacity:1}85%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.nring{fill:none;stroke-width:1.6;animation:nring 2.6s ease-out infinite;transform-box:fill-box;transform-origin:center;opacity:0}
+@keyframes nring{0%,45%{opacity:0;transform:scale(1)}50%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.4)}}
+.synapse{stroke:rgba(221,214,254,.6);stroke-width:1.3}
 
 </style>
 <div class="waves" aria-hidden="true"></div>
@@ -1503,7 +1511,7 @@ function viewMasuk() {
 // ---------- shared explainer sections ----------
 function secProcess() {
   const steps = [
-    ['upload', 'Pengedar muat naik', 'Isi maklumat filem, muat naik DCP/MXF/MP4 dan bayar fi melalui FPX.', `<div class="mini mini-up"><i></i></div>`],
+    ['upload', 'Pengedar muat naik', 'Log masuk dengan MyDigital ID, isi maklumat filem, muat naik DCP/MXF/MP4 dan bayar fi melalui FPX.', `<div class="mini mini-up"><i></i></div>`],
     ['lock', 'Peti simpanan selamat', 'Fail disahkan (SHA-256), disulitkan dan diberi tera air forensik.', `<div class="mini mini-lock"></div>`],
     ['brain', 'Otak AI KDN', 'Bingkai, audio dan sari kata dianalisis; setiap adegan diberi skor 8 kategori.', `<div class="mini mini-ai">${CATS.map((c, i) => `<span style="background:${c.c};animation-delay:${i * .12}s"></span>`).join('')}</div>`],
     ['user', 'Pegawai LPF memutuskan', 'Pegawai menyemak penanda, mengesahkan bukti dan memilih klasifikasi.', `<div class="mini mini-ok"><span class="tick">${I.check}</span>Disahkan pegawai</div>`],
@@ -1522,7 +1530,12 @@ function secBrain() {
   const topX = [300, 433, 567, 700];
   const chips = CATS.map((c, i) => { const top = i < 4; const x = topX[i % 4], y = top ? 44 : 566; return { c, x, y, top, i, label: short[i] }; });
   const neurons = [[430, 260], [470, 235], [520, 225], [565, 250], [600, 285], [455, 300], [505, 290], [550, 310], [420, 335], [480, 350], [535, 360], [585, 335], [395, 295], [610, 320]];
-  const syn = [[0, 1], [1, 2], [2, 3], [3, 4], [5, 6], [6, 7], [8, 9], [9, 10], [10, 11], [0, 5], [6, 2], [7, 11], [12, 8], [4, 13], [5, 9]];
+  const syn = [[0, 1], [1, 2], [2, 3], [3, 4], [5, 6], [6, 7], [8, 9], [9, 10], [10, 11], [0, 5], [6, 2], [7, 11], [12, 8], [4, 13], [5, 9], [12, 0], [7, 3], [9, 6], [11, 13], [10, 7], [1, 6], [8, 5]];
+  const LOBE = [['#C084FC', '#7C3AED'], ['#F472B6', '#BE185D'], ['#22D3EE', '#0E7490'], ['#60A5FA', '#1D4ED8'], ['#34D399', '#047857'], ['#FBBF24', '#B45309'], ['#FB7185', '#BE123C'], ['#818CF8', '#4338CA']];
+  const NCOL = ['#F0ABFC', '#67E8F9', '#FDE68A', '#A7F3D0', '#FBCFE8', '#BAE6FD', '#FFFFFF', '#FCA5A5', '#C4B5FD', '#86EFAC', '#FDBA74', '#93C5FD', '#F9A8D4', '#5EEAD4'];
+  const calm = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sulci = ['M505 188 C 492 250, 518 320, 500 405', 'M395 280 c 20 -30 50 -10 60 -40 s 40 -20 50 10', 'M410 330 c 30 10 40 -25 70 -15 s 30 30 20 50', 'M530 210 c 25 10 20 40 50 40 s 30 20 20 50', 'M540 300 c 20 -20 50 -5 60 15', 'M455 380 c 20 -15 45 0 60 -10', 'M565 380 c 10 -15 30 -15 45 -5', 'M560 405 c 15 -6 30 -6 50 0'];
+  const impulse = (d, col, dur, delay, r = 4) => calm ? '' : `<circle r="${r}" fill="${col}" filter="url(#nglow)" opacity="0"><animateMotion dur="${dur}s" begin="${delay}s" repeatCount="indefinite" path="${d}" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear"></animateMotion><animate attributeName="opacity" dur="${dur}s" begin="${delay}s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;.08;.48;.56;1"></animate></circle>`;
   const node = (x, y, w, t, s, col, al) => `<g><rect x="${x}" y="${y - 28}" width="${w}" height="56" rx="14" fill="rgba(255,255,255,.10)" stroke="${col}" stroke-opacity=".55"></rect><text x="${al === 'r' ? x + w - 14 : x + 14}" y="${y - 4}" font-size="14" font-weight="700" fill="#fff" text-anchor="${al === 'r' ? 'end' : 'start'}">${t}</text><text x="${al === 'r' ? x + w - 14 : x + 14}" y="${y + 15}" font-size="11.5" fill="rgba(255,255,255,.75)" text-anchor="${al === 'r' ? 'end' : 'start'}">${s}</text></g>`;
   const inPaths = ys.map(y => `M215 ${y} C 320 ${y}, 330 320, 405 320`);
   const outPaths = ys.map(y => `M600 320 C 670 320, 680 ${y}, 785 ${y}`);
@@ -1530,25 +1543,29 @@ function secBrain() {
     <defs>
       <radialGradient id="bgr" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#9CCBFF"></stop><stop offset=".45" stop-color="#2F7FF0"></stop><stop offset="1" stop-color="#0B2F7A"></stop></radialGradient>
       <radialGradient id="bglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#22B5F0" stop-opacity=".55"></stop><stop offset="1" stop-color="#22B5F0" stop-opacity="0"></stop></radialGradient>
-      <linearGradient id="cer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2563D9"></stop><stop offset="1" stop-color="#0A2463"></stop></linearGradient>
+      <linearGradient id="cer" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#4C1D95"></stop></linearGradient>
+      <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366F1"></stop><stop offset="1" stop-color="#312E81"></stop></linearGradient>
+      <radialGradient id="bglow2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#EC4899" stop-opacity=".45"></stop><stop offset="1" stop-color="#EC4899" stop-opacity="0"></stop></radialGradient>
+      <radialGradient id="bglow3" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#A855F7" stop-opacity=".5"></stop><stop offset="1" stop-color="#A855F7" stop-opacity="0"></stop></radialGradient>
+      ${LOBE.map(([a, b], i) => `<radialGradient id="lobe${i}" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".9"></stop><stop offset=".18" stop-color="${a}"></stop><stop offset=".7" stop-color="${b}"></stop><stop offset="1" stop-color="#1E1B4B"></stop></radialGradient>`).join('')}
+      <filter id="nglow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.6" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
     </defs>
     ${inPaths.map((p, i) => `<path class="flowline" d="${p}" stroke="#8EC5FF" style="animation-delay:${-i * .3}s"></path><circle r="4.5" fill="#D6E8FF"><animateMotion dur="${2.6 + i * .3}s" repeatCount="indefinite" path="${p}"></animateMotion></circle>`).join('')}
     ${outPaths.map((p, i) => `<path class="flowline" d="${p}" stroke="#FDE68A" style="animation-delay:${-i * .3}s"></path><circle r="4.5" fill="#FDE68A"><animateMotion dur="${2.4 + i * .35}s" repeatCount="indefinite" path="${p}"></animateMotion></circle>`).join('')}
-    ${chips.map(ch => `<path class="flowline" d="M${ch.x} ${ch.top ? 62 : 548} Q ${(ch.x + 500) / 2} ${ch.top ? 150 : 490} 500 ${ch.top ? 232 : 408}" stroke="${ch.c.c}" style="stroke-opacity:.8;animation-duration:2.2s"></path>`).join('')}
-    <ellipse class="brain-glow" cx="505" cy="315" rx="200" ry="160" fill="url(#bglow)"></ellipse>
-    <g filter="drop-shadow(0 0 18px rgba(34,181,240,.55))">
-      ${[[445, 268, 74], [527, 252, 80], [592, 293, 62], [413, 328, 62], [482, 343, 72], [560, 348, 66], [614, 345, 40], [388, 290, 46]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#bgr)"></circle>`).join('')}
+    ${chips.map(ch => { const d = `M${ch.x} ${ch.top ? 62 : 548} Q ${(ch.x + 500) / 2} ${ch.top ? 150 : 490} 500 ${ch.top ? 232 : 408}`; return `<path class="flowline" d="${d}" stroke="${ch.c.c}" style="stroke-opacity:.8;animation-duration:2.2s"></path>${impulse(d, ch.c.c, 2.4 + (ch.i % 3) * .4, ch.i * .45, 4)}`; }).join('')}
+    <ellipse class="brain-glow" cx="470" cy="300" rx="190" ry="150" fill="url(#bglow)"></ellipse>
+    <ellipse class="brain-glow" cx="560" cy="330" rx="180" ry="145" fill="url(#bglow2)" style="animation-delay:-1.3s"></ellipse>
+    <ellipse class="brain-glow" cx="505" cy="250" rx="160" ry="110" fill="url(#bglow3)" style="animation-delay:-2.6s"></ellipse>
+    <g filter="drop-shadow(0 0 16px rgba(168,85,247,.5))">
+      ${[[445, 268, 74], [527, 252, 80], [592, 293, 62], [413, 328, 62], [482, 343, 72], [560, 348, 66], [614, 345, 40], [388, 290, 46]].map(([x, y, r], i) => `<circle class="lobe" cx="${x}" cy="${y}" r="${r}" fill="url(#lobe${i})" style="animation-delay:${-i * .7}s"></circle>`).join('')}
       <ellipse cx="586" cy="398" rx="44" ry="28" fill="url(#cer)"></ellipse>
-      <path d="M520 392 C 524 420, 530 440, 534 462" stroke="#1C4FB0" stroke-width="20" stroke-linecap="round" fill="none"></path>
+      <path d="M520 392 C 524 420, 530 440, 534 462" stroke="url(#stem)" stroke-width="20" stroke-linecap="round" fill="none"></path>
     </g>
-    <g fill="none" stroke="rgba(255,255,255,.42)" stroke-width="3" stroke-linecap="round">
-      <path d="M505 188 C 492 250, 518 320, 500 405"></path>
-      <path d="M395 280 c 20 -30 50 -10 60 -40 s 40 -20 50 10"></path><path d="M410 330 c 30 10 40 -25 70 -15 s 30 30 20 50"></path>
-      <path d="M530 210 c 25 10 20 40 50 40 s 30 20 20 50"></path><path d="M540 300 c 20 -20 50 -5 60 15"></path><path d="M455 380 c 20 -15 45 0 60 -10"></path>
-      <path d="M565 380 c 10 -15 30 -15 45 -5"></path><path d="M560 405 c 15 -6 30 -6 50 0"></path>
-    </g>
+    <g fill="none" stroke="rgba(255,255,255,.38)" stroke-width="3" stroke-linecap="round">${sulci.map(d => `<path d="${d}"></path>`).join('')}</g>
+    <g fill="none" stroke-width="3.5" stroke-linecap="round" filter="url(#nglow)">${sulci.map((d, i) => `<path class="spark" d="${d}" pathLength="100" stroke="${NCOL[(i * 3) % NCOL.length]}" style="animation-delay:${-i * .55}s;animation-duration:${2.2 + (i % 3) * .5}s"></path>`).join('')}</g>
     ${syn.map(([a, b]) => `<line class="synapse" x1="${neurons[a][0]}" y1="${neurons[a][1]}" x2="${neurons[b][0]}" y2="${neurons[b][1]}"></line>`).join('')}
-    ${neurons.map(([x, y], i) => `<circle class="neuron" cx="${x}" cy="${y}" r="5" fill="#fff" style="animation-delay:${(i * .37) % 2.6}s"></circle>`).join('')}
+    ${syn.map(([a, b], k) => impulse(`M${neurons[a][0]} ${neurons[a][1]} L ${neurons[b][0]} ${neurons[b][1]}`, NCOL[(a + k) % NCOL.length], 1.6 + (k % 4) * .35, (k * .31) % 2.4)).join('')}
+    ${neurons.map(([x, y], i) => `<circle class="nring" cx="${x}" cy="${y}" r="5" stroke="${NCOL[i]}" style="animation-delay:${(i * .37) % 2.6}s"></circle><circle class="neuron" cx="${x}" cy="${y}" r="5" fill="${NCOL[i]}" filter="url(#nglow)" style="animation-delay:${(i * .37) % 2.6}s"></circle>`).join('')}
     <text class="title" x="505" y="506" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" letter-spacing=".06em">Otak AI KDN</text>
     <text x="505" y="526" text-anchor="middle" font-size="11.5" fill="rgba(255,255,255,.8)">Model multimodal · hos berdaulat di Malaysia</text>
     ${chips.map(ch => `<g class="cat8" style="--i:${ch.i}"><rect x="${ch.x - 62}" y="${ch.y - 18}" width="124" height="36" rx="18" fill="${ch.c.c}" stroke="${ch.c.c}" stroke-width="1.5"></rect><text x="${ch.x}" y="${ch.y + 5}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">${ch.label}</text></g>`).join('')}
@@ -2124,8 +2141,8 @@ function secArch() {
 
 // ---------- mechanics of the TAPIS solution (slide-style hub diagram) ----------
 const MECH_STEPS = [
-  ['Serahan filem', 'Pengedar, penerbit atau platform OTT menyerahkan filem dan metadata melalui Portal Pengedar.'],
-  ['Sahkan identiti', 'TAPIS mengesahkan pengguna melalui MyDigital ID dan menyemak pendaftaran syarikat.'],
+  ['Log masuk MyDigital ID', 'Pengedar, penerbit atau platform OTT log masuk ke Portal Pengedar melalui MyDigital ID; TAPIS mengesahkan identiti dan pendaftaran syarikat sebelum serahan dibenarkan.'],
+  ['Serahan filem', 'Pengguna yang disahkan menyerahkan filem dan metadata melalui Portal Pengedar.'],
   ['Simpan di repositori pusat', 'Fail filem disulitkan dan disimpan di Peti Simpanan Pusat dalam Malaysia; salinan semakan diberi tera air.'],
   ['Kutip fi penapisan', 'Fi dikira (biasa atau ekspres) dan dikutip melalui FPX, JomPAY, DuitNow, kad atau e-dompet.'],
   ['Pra-saringan Otak AI KDN', 'AI memecah filem kepada adegan, memberi skor 8 kategori dan menghantar cadangan klasifikasi kepada TAPIS.'],
@@ -2152,8 +2169,8 @@ function secMech() {
       <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2F7A"></stop><stop offset=".6" stop-color="#1460E0"></stop><stop offset="1" stop-color="#22B5F0"></stop></linearGradient>
       <filter id="msh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#10388C" flood-opacity=".14"></feDropShadow></filter>
     </defs>
-    ${arrow(1, 'M270 170 C 380 220, 420 280, 485 318')}
-    ${arrow(2, 'M485 360 L 272 360')}
+    ${arrow(1, 'M485 360 L 272 360')}
+    ${arrow(2, 'M270 170 C 380 220, 420 280, 485 318')}
     ${arrow(3, 'M600 292 L 600 168')}
     ${arrow(4, 'M715 350 L 912 350')}
     ${arrow(5, 'M705 305 C 800 230, 880 190, 935 170')}${arrow(5, 'M945 205 C 880 250, 800 300, 712 330')}
@@ -2175,8 +2192,8 @@ function secMech() {
         <g transform="translate(515,322)"><rect width="56" height="56" rx="16" fill="rgba(255,255,255,.18)"></rect><path transform="translate(9,9) scale(.35)" d="M19.44 88.56Q19.44 96.48 28.8 91.44L79.92 61.2Q90 54 79.92 46.8L28.8 16.56Q19.44 11.52 19.44 20.88z" fill="#fff"></path></g>
         <text x="585" y="345" class="hub1">TAPIS</text><text x="585" y="366" class="hub2">Platform klasifikasi</text><text x="585" y="382" class="hub2">filem nasional</text></g>
     </g>
-    ${badge(1, 335, 196)}${note(1, 300, 240, ['Serah filem', '& metadata'], 'end')}
-    ${badge(2, 378, 360)}${note(2, 378, 392, ['Sahkan identiti &', 'pendaftaran syarikat'], 'middle')}
+    ${badge(2, 335, 196)}${note(2, 300, 240, ['Serah filem', '& metadata'], 'end')}
+    ${badge(1, 378, 360)}${note(1, 378, 392, ['Log masuk & sahkan', 'identiti syarikat'], 'middle')}
     ${badge(3, 600, 230)}${note(3, 622, 222, ['Fail disulitkan &', 'kekal di Malaysia'])}
     ${badge(4, 812, 350)}${note(4, 812, 382, ['Kutip fi penapisan', 'biasa / ekspres'], 'middle')}
     ${badge(5, 830, 230)}${note(5, 808, 178, ['Skor 8 kategori &', 'cadangan klasifikasi'], 'middle')}

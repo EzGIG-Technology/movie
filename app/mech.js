@@ -1,7 +1,7 @@
 // ---------- mechanics of the TAPIS solution (slide-style hub diagram) ----------
 const MECH_STEPS = [
-  ['Serahan filem', 'Pengedar, penerbit atau platform OTT menyerahkan filem dan metadata melalui Portal Pengedar.'],
-  ['Sahkan identiti', 'TAPIS mengesahkan pengguna melalui MyDigital ID dan menyemak pendaftaran syarikat.'],
+  ['Log masuk MyDigital ID', 'Pengedar, penerbit atau platform OTT log masuk ke Portal Pengedar melalui MyDigital ID; TAPIS mengesahkan identiti dan pendaftaran syarikat sebelum serahan dibenarkan.'],
+  ['Serahan filem', 'Pengguna yang disahkan menyerahkan filem dan metadata melalui Portal Pengedar.'],
   ['Simpan di repositori pusat', 'Fail filem disulitkan dan disimpan di Peti Simpanan Pusat dalam Malaysia; salinan semakan diberi tera air.'],
   ['Kutip fi penapisan', 'Fi dikira (biasa atau ekspres) dan dikutip melalui FPX, JomPAY, DuitNow, kad atau e-dompet.'],
   ['Pra-saringan Otak AI KDN', 'AI memecah filem kepada adegan, memberi skor 8 kategori dan menghantar cadangan klasifikasi kepada TAPIS.'],
@@ -28,8 +28,8 @@ function secMech() {
       <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2F7A"></stop><stop offset=".6" stop-color="#1460E0"></stop><stop offset="1" stop-color="#22B5F0"></stop></linearGradient>
       <filter id="msh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#10388C" flood-opacity=".14"></feDropShadow></filter>
     </defs>
-    ${arrow(1, 'M270 170 C 380 220, 420 280, 485 318')}
-    ${arrow(2, 'M485 360 L 272 360')}
+    ${arrow(1, 'M485 360 L 272 360')}
+    ${arrow(2, 'M270 170 C 380 220, 420 280, 485 318')}
     ${arrow(3, 'M600 292 L 600 168')}
     ${arrow(4, 'M715 350 L 912 350')}
     ${arrow(5, 'M705 305 C 800 230, 880 190, 935 170')}${arrow(5, 'M945 205 C 880 250, 800 300, 712 330')}
@@ -51,8 +51,8 @@ function secMech() {
         <g transform="translate(515,322)"><rect width="56" height="56" rx="16" fill="rgba(255,255,255,.18)"></rect><path transform="translate(9,9) scale(.35)" d="M19.44 88.56Q19.44 96.48 28.8 91.44L79.92 61.2Q90 54 79.92 46.8L28.8 16.56Q19.44 11.52 19.44 20.88z" fill="#fff"></path></g>
         <text x="585" y="345" class="hub1">TAPIS</text><text x="585" y="366" class="hub2">Platform klasifikasi</text><text x="585" y="382" class="hub2">filem nasional</text></g>
     </g>
-    ${badge(1, 335, 196)}${note(1, 300, 240, ['Serah filem', '& metadata'], 'end')}
-    ${badge(2, 378, 360)}${note(2, 378, 392, ['Sahkan identiti &', 'pendaftaran syarikat'], 'middle')}
+    ${badge(2, 335, 196)}${note(2, 300, 240, ['Serah filem', '& metadata'], 'end')}
+    ${badge(1, 378, 360)}${note(1, 378, 392, ['Log masuk & sahkan', 'identiti syarikat'], 'middle')}
     ${badge(3, 600, 230)}${note(3, 622, 222, ['Fail disulitkan &', 'kekal di Malaysia'])}
     ${badge(4, 812, 350)}${note(4, 812, 382, ['Kutip fi penapisan', 'biasa / ekspres'], 'middle')}
     ${badge(5, 830, 230)}${note(5, 808, 178, ['Skor 8 kategori &', 'cadangan klasifikasi'], 'middle')}
